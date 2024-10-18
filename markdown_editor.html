@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>markdown editor</title>
+
+  <style>
+    .previewer {
+      position: absolute;
+      left: 0.8em;
+      top: 0.8em;
+      width: calc(50% - 0.8em);
+      max-width: 100%;
+      max-height: calc(100% - 1.6em);
+      box-sizing: border-box;
+      overflow: auto;
+    }
+
+    .editor {
+      position: absolute;
+      width: calc(50% - 1.6em);
+      right: 0.8em;
+      top: 2.4em;
+      height: calc(100% - 2.4em - 0.8em);
+      border: 1px solid #666;
+      outline: none;
+      resize: none;
+      box-sizing: border-box;
+      font-size: 17px;
+    }
+  </style>
+</head>
+
+<body id="app">
+
+  <div
+    :class="[isEditorVisible ? 'previewer' : '']"
+    v-html="markedToHtml">
+  </div>
+
+  <textarea
+    :class="[isEditorVisible ? 'editor' : '']"
+    :style="{'display': isEditorVisible ? 'block' : 'none'}"
+    v-model="inputText"
+    placeholder="请输入内容...">
+  </textarea>
+
+  <button style="position: absolute; right: 8em; top: 0.8em;"
+    @click="() => { isEditorVisible = !isEditorVisible; }">
+    {{ isEditorVisible ? "隐藏编辑器" : "显示编辑器"}}
+  </button>
+
+
+  <!-- 代码块语法着色 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+
+  <!-- 解析 latex 数学公式 -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      options: { enableMenu: false },
+      startup: { typeset: false }
+    };
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js"></script>
+
+  
+  <!-- 从我的 github 仓库中获取 markdown.css -->
+  <script>
+    fetch("https://raw.githubusercontent.com/szdxdxdx/my-vscode-markdown-css/refs/heads/main/markdown.css")
+      .then(res => res.text())
+      .then(css => document.head.innerHTML += `<style>${css}</style>`)
+  </script>
+
+
+  <script type="module">
+    import { createApp, ref, computed, watch, nextTick } from "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js"
+
+    function setup() {
+      let inputText = ref("")
+      let markedToHtml = computed(() => marked.parse(inputText.value))
+      let isEditorVisible = ref(true)
+
+      function highlight() {
+          hljs.highlightAll();
+          MathJax.typesetPromise();
+      }
+
+      watch(markedToHtml, () => nextTick(highlight))
+
+      setTimeout(highlight, 2000)
+
+      return { inputText, markedToHtml, isEditorVisible }
+    }
+
+    createApp({ setup }).mount('#app')
+  </script>
+</body>
+</html>
