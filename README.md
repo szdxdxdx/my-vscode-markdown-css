@@ -12,12 +12,22 @@ https://szdxdxdx.github.io/my-vscode-markdown-css/markdown_editor.html
 
 ```json
 "markdown.styles": [
-    "markdown.css"
+  "markdown.css"
 ]
 ```
 
-Windows 全局路径（例如：`C:\Users\...`）似乎不支持。你可以上传 CSS 文件，并使用 URL 作为文件路径。
-
 ### 方案二
 
-直接替换掉 vscode 默认的 `markdown.css`。默认的 css 样式文件可能存放在：`C:\Program Files\Microsoft VS Code\resources\app\extensions\markdown-language-features\media\markdown.css`。
+你可以上传 CSS 文件，并使用 URL 作为文件路径，比如：
+
+```json
+"markdown.styles": [
+  "https://szdxdxdx.github.io/my-vscode-markdown-css/markdown.css"
+],
+```
+
+### 方案三
+
+直接替换掉 vscode 默认的 `markdown.css`。
+
+默认的 css 样式文件可能存放在：`C:\Program Files\Microsoft VS Code\resources\app\extensions\markdown-language-features\media\markdown.css`。

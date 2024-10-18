@@ -3,8 +3,6 @@
 
 /* vscode 的 markdown 转 html 结构：html > body > div */
 
-html { background-color: #fff; }
-
 body { margin: 0; padding: 0.8em; }
 
 body > div {
