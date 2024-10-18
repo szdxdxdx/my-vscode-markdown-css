@@ -1,0 +1,313 @@
+
+/* ------------------------------------------------------------------------ */
+
+/* vscode 的 markdown 转 html 结构：html > body > div */
+
+html { background-color: #fff; }
+
+body { margin: 0; padding: 0.8em; }
+
+body > div {
+  max-width: 40em;
+  margin: 0 auto;
+  padding: 4em clamp(1em, calc(1em + 3 * (100vw - 45em) / 10), 5em);;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0 #bbb;
+  color:black;
+  text-align:justify;
+  font-size: 15.5px;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* debug，框选当前元素 */
+
+body > div *:not(:has(>:hover)):hover {
+  outline: 1px solid #f06;
+  outline-offset: 1px;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* 字体 */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Times New Roman', 'simhei', sans-serif;
+}
+
+p,
+table th,
+table td,
+ol li,
+ul li,
+details, summary {
+  font-family: 'Times New Roman', 'simsun', serif;
+}
+
+pre, code {
+  font-family: monospace;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* 标题 */
+
+h1 {
+  margin: 0.5em 0;
+  font-size: 2.4em;
+  font-weight: normal;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+h2 {
+  margin: 0.8em 0;
+  font-size: 1.2em;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.5em 0;
+  font-size: 1em;
+}
+
+/* 标题自动编号 */
+
+h1 {                                counter-reset: h2_counter; }
+h2 { counter-increment: h2_counter; counter-reset: h3_counter; }
+h3 { counter-increment: h3_counter; counter-reset: h4_counter; }
+h4 { counter-increment: h4_counter; counter-reset: h5_counter; }
+h5 { counter-increment: h5_counter; counter-reset: h6_counter; }
+h6 { counter-increment: h6_counter;                            }
+
+h2:before { content: counter(h2_counter) "." }
+h3:before { content: counter(h2_counter) "." counter(h3_counter) "." }
+h4:before { content: counter(h2_counter) "." counter(h3_counter) "." counter(h4_counter) "." }
+h5:before { content: counter(h2_counter) "." counter(h3_counter) "." counter(h4_counter) "." counter(h5_counter) "." }
+h6:before { content: counter(h2_counter) "." counter(h3_counter) "." counter(h4_counter) "." counter(h5_counter) "." counter(h6_counter) "."; }
+ 
+h2:before,
+h3:before,
+h4:before,
+h5:before,
+h6:before { margin-right: 1em; }
+
+/* ------------------------------------------------------------------------ */
+
+/* 段落 */
+
+p {
+  text-indent: 2em;
+  line-height: 1.4em;
+  font-size: 1em;
+  margin: 0;
+}
+
+a      { color: #06f; text-decoration: none; }
+em     { color: #666; font-weight: normal; font-style: italic; }
+strong { color: #f06; font-weight: bolder; font-style: normal; }
+
+/* ------------------------------------------------------------------------ */
+
+/* 三线表 */
+
+table {
+  display: table;
+  min-width: 50%;
+  max-width: 98%;
+  width: fit-content;
+  margin: 1em auto;
+  border-top: 1.5px solid #000;
+  border-bottom: 1.5px solid #000;
+  border-collapse: collapse;
+  text-align: center;
+  overflow: auto;
+}
+
+table thead {
+  border-bottom: 1px solid;
+}
+
+table th,
+table td {
+  padding: 0.1em 0.8em;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* 列表 */
+
+ul,
+ol {
+  padding-left: 2em;
+  margin: 1em 0;
+}
+
+ul li, 
+ol li {
+  line-height: 1.4em;
+  font-size: 1em;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* 行内代码 */
+
+code {
+  border-radius: 0;
+  color: #a30;
+  background-color: transparent;
+  word-break: break-all;
+}
+:not(pre) > code::before,
+:not(pre) > code::after { content: "`"; }
+
+/* 代码块 */
+
+pre {
+  margin: 1em 0;
+  padding: 0.2em 0.5em 0.3em 0.5em;
+  overflow: auto;
+}
+
+pre:has(code) { border: 1px solid #000; }
+pre code {
+  border: none;
+  color: #000;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* 引用 */
+
+blockquote {
+  margin: 1em 0;
+  padding-left: 1.2em;
+  border-left: 0.3em solid #ddd;
+  background-color: transparent;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* 图片 */
+
+img {
+  display: block;
+  margin: 1em auto;
+  min-width: 30%;
+  max-width: 98%;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* 分割线 */
+
+hr {
+  margin: 0.5em 0;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* 折叠框 */
+
+details {
+  padding: 0.2em 0.5em;
+  border: 1px solid #000;
+}
+
+details > * {
+  overflow-x: auto;
+  overflow-y: clip;
+}
+
+details > summary {
+  margin: 0 -0.5em;
+  padding: 0 0.5em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+details[open] > summary {
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid #000;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* latex 公式 */
+
+.katex {
+  color: #147;
+  font-size: 1em !important;
+}
+
+/* ------------------------------------------------------------------------ */
+
+/* 代码块语法着色 */
+
+.hljs-comment,
+.hljs-quote,
+.hljs-variable {
+  color: #282
+}
+
+.hljs-built_in,
+.hljs-keyword,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-tag {
+  color: #00f;
+}
+
+.hljs-literal,
+.hljs-section,
+.hljs-string,
+.hljs-template-tag,
+.hljs-addition,
+.hljs-attribute,
+.hljs-title,
+.hljs-template-variable,
+.hljs-type {
+  color: #a22
+}
+
+.hljs-deletion,
+.hljs-selector-pseudo,
+.hljs-meta,
+.hljs-selector-attr {
+  color: #29b
+}
+
+.hljs-doctag {
+  color: #666
+}
+
+.hljs-attr {
+  color: #f06
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-symbol {
+  color: #0be
+}
+
+.hljs-emphasis {
+  font-style: italic
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+/* ------------------------------------------------------------------------ */
