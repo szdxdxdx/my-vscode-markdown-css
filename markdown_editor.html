@@ -52,10 +52,7 @@
   </textarea>
 
   <button
-    style="
-      position: absolute;
-      right: 8em;
-      top: 0.8em;"
+    style=" position: absolute; right: 8em; top: 0.8em;"
     @click="() => { isEditorVisible = !isEditorVisible; }">
     {{ isEditorVisible ? "隐藏编辑器" : "显示编辑器"}}
   </button>
@@ -71,6 +68,10 @@
       let inputText = ref("")
       let markedToHtml = computed(() => marked.parse(inputText.value))
       let isEditorVisible = ref(true)
+
+      fetch("https://szdxdxdx.github.io/my-vscode-markdown-css/README.md")
+        .then(res => res.text())
+        .then(text => inputText.value = text)
 
       function highlight() {
         hljs.highlightAll();
