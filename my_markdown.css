@@ -3,14 +3,21 @@
 
 /* vscode 的 markdown 转 html 结构：html > body > div */
 
-html { margin: 0; padding: 0; }
+html {
+  margin: 0;
+  padding: 0; 
+  background-color: #fff;
+}
 
-body { margin: 0; padding: 0.8em; }
+body {
+  margin: 0;
+  padding: 0.8em;
+}
 
 body > div {
   max-width: 40em;
   margin: 0 auto;
-  padding: 4em clamp(1em, calc(1em + 3 * (100vw - 45em) / 10), 5em);;
+  padding: 4em clamp(1em, calc(1em + 3 * (100vw - 45em) / 10), 5em);
   background-color: #fff;
   box-shadow: 0 0 10px 0 #bbb;
   color:black;
