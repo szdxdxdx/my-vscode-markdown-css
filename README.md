@@ -69,7 +69,7 @@ Copy the `my_markdown.css` file to your current workspace, then modify the `Sett
 ]
 ```
 
-You should add the relative path to my_markdown.css within your current workspace. Absolute paths (e.g., `C:\...`) from Windows might not be supported.
+You should add the relative path to `my_markdown.css` within your current workspace. Absolute paths (e.g., `C:\...`) from Windows might not be supported.
 
 #### Option 2
 
