@@ -5,6 +5,8 @@
 
 https://szdxdxdx.github.io/my-vscode-markdown-css/markdown_editor.html
 
+页面需要在线引入各类 js 库，请耐心等待页面加载
+
 ## 如何使用
 
 ### 清除默认的 CSS
