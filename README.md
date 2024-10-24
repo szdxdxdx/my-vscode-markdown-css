@@ -1,11 +1,15 @@
 
 # My VS Code Markdown CSS
 
+## 介绍
+
+在 vscode 中使用自定义的 markdown 样式
+
 ## CSS 效果预览
 
-https://szdxdxdx.github.io/my-vscode-markdown-css/markdown_editor.html
+*页面需要在线引入各类 js 库，请耐心等待页面加载*
 
-页面需要在线引入各类 js 库，请耐心等待页面加载
+https://szdxdxdx.github.io/my-vscode-markdown-css/markdown_editor.html
 
 ## 如何使用
 
@@ -47,7 +51,13 @@ https://szdxdxdx.github.io/my-vscode-markdown-css/markdown_editor.html
 
 # My VS Code Markdown CSS
 
+## Intro
+
+Using custom markdown styles in VS code.
+
 ## CSS Preview
+
+*The page needs to introduce various JS libraries online. Please be patient and wait for the page to load.*
 
 https://szdxdxdx.github.io/my-vscode-markdown-css/markdown_editor.html
 
